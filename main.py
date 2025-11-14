@@ -11,23 +11,33 @@ def displayMenu():
         print("4. Supprimer un livre")
         print("0. Quitter")
 
-        answer = input("Que voulez-vous faire ?\n")
+        answer = input("Que voulez-vous faire ?: \n")
 
         if answer == "1":
-            print(books)
+            if len (books) == 0:
+                print("\nVotre bibliothèque est vide.")
+            else:
+                print("\nVoici votre bibliothèque:")
+                for i, book in enumerate(books, start=1):
+                    print(f"{i}. {book}")
+            input("\nAppuyer sur entrée pour revenir au menu...")
         elif answer == "2":
-            bookName = input("Indiquez le nom du livre que vous souhaitez ajouter: ")
+            bookName = input("\nIndiquez le nom du livre que vous souhaitez ajouter: ")
             books.append(bookName)
-            print("Votre livre ", bookName, " a été ajouté avec succès.")
+            print(f'Votre livre "{bookName}" a été ajouté avec succès.')
+            input("\nAppuyer sur entrée pour revenir au menu...")
         elif answer == "3":
-            changeBook = input("Quel est le livre que vous souhaitez modifier ?: ")
+            changeBook = input("\nQuel est le livre que vous souhaitez modifier ?: ")
             books.remove(changeBook)
             newBook = input("Comment souhaitez-vous le renommer ?: ")
             books.append(newBook)
+            print(f'Votre livre "{changeBook}" a été renommé "{newBook}" avec succès')
+            input("\nAppuyer sur entrée pour revenir au menu...")
         elif answer == "4":
-            rmBook = input("Quel livre souhaitez-vous supprimer ?: ")
+            rmBook = input("\nQuel livre souhaitez-vous supprimer ?: ")
             books.remove(rmBook)
-            print("Le livre ", rmBook, "a été supprimé de la bibliothèque avec succès.")
+            print(f'Le livre "{rmBook}" a été supprimé de la bibliothèque avec succès.')
+            input("\nAppuyer sur entrée pour revenir au menu...")
         elif answer == "0":
             exit()
 
